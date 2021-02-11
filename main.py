@@ -1,9 +1,11 @@
 ##Tic Tac Toe
-#Name:
-#Date:
-
+#Name: Ayden Bradley
+#Date: Feb. 10th 2021
+B = [' ']*7 + ['X'], ['O'], ['X']
 #1. (Var) Setup the empty board as a list
-theBoard = []
+theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,
+            '4': ' ' , '5': ' ' , '6': ' ' ,
+            '1': ' ' , '2': ' ' , '3': ' ' }
 
 #2. (fun) Print the board.
 #in: a 10 item list (either x, o or ' ')
@@ -11,8 +13,11 @@ theBoard = []
 #out: none
 
 def printBoard(board):
-    pass
-
+    print(board['7'] + ' |' + board['8'] + ' |' + board['9'])
+    print('--+--+--')
+    print(board['4'] + ' |' + board['5'] + ' |' + board['6'])
+    print('--+--+--')
+    print(board['1'] + ' |' + board['2'] + ' |' + board['3'])
 #3a. (fun) Determine if player is X or O
 player1 = ''
 player2 = ''
@@ -22,7 +27,17 @@ player2 = ''
 #out: None
 
 def chooseLetter():
-    pass
+  global player1
+  global player2
+  letter = input("Which player would you like to be? X or O?")
+  if letter == 'X':
+    player1 = "X"
+    player2 = "O"
+  else:
+    player1 = "O"
+    player2 = "X"
+
+chooseLetter()
 
 
 #3b. (fun) Choose starting player 1 or 2
