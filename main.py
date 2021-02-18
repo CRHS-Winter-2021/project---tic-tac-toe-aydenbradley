@@ -122,10 +122,13 @@ def checkFull(board):
 
 def main():
   print("Welcome to Tic Tac Toe!")
+  print(" ")
+  print("To win the game, get three of your own letter in a row on the board diagonally, horizontally, or vertically.")
   chooseLetter()
 
   while checkFull(theBoard) != True:
     playerMove(theBoard, player1)
+    print(" ")
     if checkWin(theBoard, player1) == True:
       print("Player 1 Wins!")
       break
@@ -134,6 +137,7 @@ def main():
       break
     
     playerMove(theBoard, player2)
+    print(" ")
     checkWin(theBoard, player2)
     checkFull(theBoard)
     if checkWin(theBoard, player2) == True:
