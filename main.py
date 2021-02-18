@@ -2,10 +2,10 @@
 #Name: Ayden Bradley
 #Date: Feb. 10th 2021
 B = [' ']*7 + ['X'], ['O'], ['X']
+
+theBoard = [' ']*10
 #1. (Var) Setup the empty board as a list
-theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,
-            '4': ' ' , '5': ' ' , '6': ' ' ,
-            '1': ' ' , '2': ' ' , '3': ' ' }
+#theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,           '4': ' ' , '5': ' ' , '6': ' ' ,            '1': ' ' , '2': ' ' , '3': ' ' }
 
 #2. (fun) Print the board.
 #in: a 10 item list (either x, o or ' ')
@@ -13,11 +13,11 @@ theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,
 #out: none
 
 def printBoard(board):
-    print(board['7'] + ' |' + board['8'] + ' |' + board['9'])
-    print('--+--+--')
-    print(board['4'] + ' |' + board['5'] + ' |' + board['6'])
-    print('--+--+--')
-    print(board['1'] + ' |' + board['2'] + ' |' + board['3'])
+    print(board[7] + '|' + board[8] + '|' + board[9])
+    print('-+-+-')
+    print(board[4] + '|' + board[5] + '|' + board[6])
+    print('-+-+-')
+    print(board[1] + '|' + board[2] + '|' + board[3])
 #3a. (fun) Determine if player is X or O
 player1 = ''
 player2 = ''
@@ -29,7 +29,7 @@ player2 = ''
 def chooseLetter():
   global player1
   global player2
-  letter = input("Which player would you like to be? X or O?")
+  letter = input("Which player would you like to be? X or O? ")
   if letter == 'X':
     player1 = "X"
     player2 = "O"
@@ -37,12 +37,14 @@ def chooseLetter():
     player1 = "O"
     player2 = "X"
 
-chooseLetter()
+
 
 
 #3b. (fun) Choose starting player 1 or 2
-def chooseStart():
-    pass
+
+
+
+
 
 #4. (fun) Get player move
 #in: board as list, player as X or O
@@ -52,7 +54,20 @@ def chooseStart():
 #out: none
 
 def playerMove(board, player):
-    pass
+    turn = int(input("Player " + player + ", what move would you like to make? Choose a number 1 through 9. "))
+    while board[turn] != ' ':
+      printBoard(theBoard)
+      turn = input("That spot is already taken, choose a different spot. ")
+      
+    board[turn] = player
+    printBoard(theBoard)
+      
+       
+
+
+    
+
+
 
 
 #5. (fun) Check Winner
@@ -61,7 +76,31 @@ def playerMove(board, player):
 #out: True for win, False otherwise
     
 def checkWin(board, player):
-    pass
+  if board[1] == player and board[2] == player and board[3] == player:
+    printBoard(theBoard)
+    return True
+  elif board[4] == player and board[5] == player and board[6] == player:
+    printBoard(theBoard)
+    return True
+  elif board[7] == player and board[8] == player and board[9] == player:
+    printBoard(theBoard)
+    return True
+  elif board[7] == player and board[4] == player and board[1] == player:
+    printBoard(theBoard)
+    return True
+  elif board[8] == player and board[5] == player and board[2] == player:
+    printBoard(theBoard)
+    return True
+  elif board[9] == player and board[6] == player and board[3] == player:
+    printBoard(theBoard)
+    return True
+  elif board[7] == player and board[5] == player and board[3] == player:
+    printBoard(theBoard)
+    return True
+  elif board[9] == player and board[5] == player and board[1] == player:
+    printBoard(theBoard)
+    return True
+  else: return False
 
 
 #6. (fun) Check if board is full
@@ -72,13 +111,43 @@ def checkWin(board, player):
 #out: return True if board is full, False otherwise
 
 def checkFull(board):
-    pass
+    if board.count(' ') == 1:
+      return True
+    else:
+      return False
+
+
 
 #7. Main function
 
 def main():
-    #print Welcome
-    #print instructions
+  print("Welcome to Tic Tac Toe!")
+  chooseLetter()
+
+  while checkFull(theBoard) != True:
+    playerMove(theBoard, player1)
+    if checkWin(theBoard, player1) == True:
+      print("Player 1 Wins!")
+      break
+    if checkFull(theBoard) == True:
+      print("Board is full, it's a draw.")
+      break
+    
+    playerMove(theBoard, player2)
+    checkWin(theBoard, player2)
+    checkFull(theBoard)
+    if checkWin(theBoard, player2) == True:
+      print("Player 2  Wins!")
+      break
+    if checkFull(theBoard) == True:
+      print("Board is full, it's a draw.")
+      break
+
+main()
+
+  
+    
+    
 
     #game play
     #get player letter choice
@@ -96,5 +165,5 @@ def main():
         #check win
     
     
-    pass
+
 
