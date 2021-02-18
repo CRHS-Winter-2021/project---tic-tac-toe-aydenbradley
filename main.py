@@ -55,7 +55,9 @@ def chooseLetter():
 
 def playerMove(board, player):
     turn = int(input("Player " + player + ", what move would you like to make? Choose a number 1 through 9. "))
+    print(" ")
     while board[turn] != ' ':
+      print(" ")
       printBoard(theBoard)
       turn = input("That spot is already taken, choose a different spot. ")
       
